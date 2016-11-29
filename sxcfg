@@ -13,7 +13,7 @@ def main():
         elif l.startswith("Parameter"):
             scop.remove(l)
         else:
-            l = '\t\t\t"' + l.translate(None, whitespace).replace("=",'" "') + '"\n'
+            l = '\t\t\tOption "' + l.translate(None, whitespace).replace("=",'" "') + '"\n'
             n.append(l)
 
     n.append("EndSection")
