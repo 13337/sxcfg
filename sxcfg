@@ -1,0 +1,23 @@
+#! env /usr/bin/python
+from subprocess import check_output
+from string import whitespace
+
+def main():
+    scop = check_output(['synclient']).split('\n')
+
+    n = []
+    n.append('Section "InputClass"\n\tIdentifier "touchpad"\n\tDriver "synaptics"\n\tMatchIsTouchpad "on"\n')
+    for l in scop:
+        if l == "":
+            scop.remove(l)
+        elif l.startswith("Parameter"):
+            scop.remove(l)
+        else:
+            l = '\t\t\t"' + l.translate(None, whitespace).replace("=",'" "') + '"\n'
+            n.append(l)
+
+    n.append("EndSection")
+    print ''.join(n)
+
+if __name__ == "__main__":
+    main()
