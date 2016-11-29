@@ -1,4 +1,4 @@
-#! env /usr/bin/python2
+#! /usr/bin/python2
 from subprocess import check_output
 from string import whitespace
 
